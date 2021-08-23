@@ -24,6 +24,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         corner()
+// скрыл navigation bar
         navigationController?.setNavigationBarHidden(true, animated: true)
         buttonClicked(city: "Minsk")
         buttonClicked(city: "Brest")
@@ -33,37 +34,43 @@ class ViewController: UIViewController {
         buttonClicked(city: "Vitebsk")
     }
     
+//кнопка Минск
     @IBAction func minskButton(_ sender: UIButton) {
         buttonClicked(city: "Minsk")
         showStoryboard()
     }
     
+//кнопка Брест
     @IBAction func brestButton(_ sender: UIButton) {
         buttonClicked(city: "Brest")
         showStoryboard()
     }
     
+//кнопка Гродно
     @IBAction func grodnoButtton(_ sender: UIButton) {
         buttonClicked(city: "Grodno")
         showStoryboard()
-        
     }
     
+//кнопка Гомель
     @IBAction func gomelButton(_ sender: UIButton) {
         buttonClicked(city: "Gomel")
         showStoryboard()
     }
-    
+
+//кнопка Могилев
     @IBAction func mogilevButton(_ sender: UIButton) {
         buttonClicked(city: "Mogilev")
         showStoryboard()
     }
-    
+
+//кнопка Витебск
     @IBAction func vitebskButton(_ sender: UIButton) {
         buttonClicked(city: "Vitebsk")
         showStoryboard()
     }
     
+//дейсвтия по нажатию кнопки, работы с API
     func buttonClicked(city: String) {
         let urlString = "https://api.weatherapi.com/v1/current.json?key=72cb431bb5fb4a8aaa1221355211501&q=\(city)"
         let url = URL(string: urlString)
@@ -93,6 +100,7 @@ class ViewController: UIViewController {
         task.resume()
     }
     
+// закругление
     func corner() {
         minskViewOutlet.layer.cornerRadius = 7
         brestViewOutlet.layer.cornerRadius = 7
@@ -101,7 +109,7 @@ class ViewController: UIViewController {
         mogilevViewOutlet.layer.cornerRadius = 7
         vitebskViewOutlet.layer.cornerRadius = 7
     }
-    
+//показ другого экрана
     func showStoryboard() {
         let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
         let viewController = storyboard.instantiateViewController(identifier: "WeatherViewController")
